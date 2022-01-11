@@ -13,4 +13,3 @@ public:
 	short rank, suit; // Rank and suit are short ints
 	std::string display(); // Consider overloading <<
 };
-

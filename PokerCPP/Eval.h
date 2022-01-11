@@ -15,8 +15,11 @@ class Eval {
 	// Checks if anything repeats n times
 	bool repeats(short n);
 	// Booleans for the named hands. Straight uses a helper function
+	bool bigTiger();
+	bool littleTiger();
 	bool straight();
 	bool checkStraight(short n);
+	bool bicycle();
 	bool flush();
 	bool twoPair();
 
@@ -24,4 +27,3 @@ public:
 	Eval(Card* cards); // We only need a parameterised ctor on an array of cards (a hand). Although not explicit, we assume a hand has 5 cards (see function logic, particularly straight)
 	std::string rankHands(); // Output hand and payout. Sorry but you'll have to make do with virtual bu¢k$ here
 };
-

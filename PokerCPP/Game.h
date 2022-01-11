@@ -8,4 +8,3 @@
 class Game {
 	// TODO: Major refactoring due
 };
-

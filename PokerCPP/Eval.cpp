@@ -11,6 +11,46 @@ bool Eval::repeats(short n) {
 	return false;
 }
 
+// BIG TIGER: All 5 cards from among 8 to K (inclusive), with no repeats
+bool Eval::bigTiger() {
+	// Counter for cards in the range
+	short n = 0;
+	// Iterate over the range
+	for (short i = 6; i < 12; ++i) {
+		// If anything repeats
+		if (rankCounts[i] > 1)
+			// Not a tiger
+			break;
+		// Add the rank count (0 doesn't affect anything)
+		n += rankCounts[i];
+	}
+	// If all 5 cards are in the range
+	if (n == 5)
+		// We have a tiger
+		return true;
+	return false;
+}
+
+// LITTLE TIGER: All 5 cards from among 3 to 8 (inclusive), with no repeats
+bool Eval::littleTiger() {
+	// Counter for cards in the range
+	short n = 0;
+	// Iterate over the range
+	for (short i = 1; i < 7; ++i) {
+		// If anything repeats
+		if (rankCounts[i] > 1)
+			// Not a tiger
+			break;
+		// Add the rank count (0 doesn't affect anything)
+		n += rankCounts[i];
+	}
+	// If all 5 cards are in the range
+	if (n == 5)
+		// We have a tiger
+		return true;
+	return false;
+}
+
 // STRAIGHT: If 5 consecutive cards are dealt (e.g. 4, 5, 6, 7, 8 - but in any order)
 bool Eval::straight() {
 	// For the first 8 counters (because the last 'straight' can have counters equal to 1 for indices 8 to 12, inclusive)
@@ -30,6 +70,20 @@ bool Eval::checkStraight(short n) {
 		if (rankCounts[i] != 1)
 			return false;
 	return true;
+}
+
+bool Eval::bicycle() {
+	// If there is an ace
+	if (rankCounts[12] == 1) {
+		// Check the first four cards (2 to 5)
+		for (short i = 0; i < 4; ++i)
+			// If there isn't exactly one of any, there is no way this is a bicycle
+			if (rankCounts[i] != 1)
+				return false;
+		return true;
+	}
+	// (If no ace)
+	return false;
 }
 
 // FLUSH: 5 of the same suit
@@ -101,9 +155,21 @@ std::string Eval::rankHands() {
 	else if (flush()) {
 		s = "You have a FLUSH! PAYOUT = 6";
 	}
+	// BIG TIGER: All 8 to K, no repeats
+	else if (bigTiger()) {
+		s = "You have a BIG TIGER! Payout = 4";
+	}
+	// LITTLE TIGER: All 3 to 8, no repeats
+	else if (littleTiger()) {
+		s = "You have a LITTLE TIGER! Payout = 4";
+	}
 	// STRAIGHT: 5 in a row (irrespective of the order)
 	else if (straight()) {
 		s = "You have a STRAIGHT! PAYOUT = 4";
+	}
+	// BICYCLE: Straight, but A to 5 ('wrapping around the edge')
+	else if (bicycle()) {
+		s = "You have a BICYCLE! PAYOUT = 3";
 	}
 	// THREE OF A KIND: self-explanatory
 	else if (repeats(3)) {

@@ -3,7 +3,6 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include <algorithm>
 
 void Deck::shuffle() {
 	currentCard = 0; // Start with the first (zeroth) card)
@@ -32,7 +31,7 @@ Deck::Deck() { // ctor
 }
 
 Card Deck::deal() { // Deal a card
-	//
+	// If at the top
 	if (currentCard > 51) {
 		std::cout << "Reshuffling..." << std::endl;
 		shuffle();

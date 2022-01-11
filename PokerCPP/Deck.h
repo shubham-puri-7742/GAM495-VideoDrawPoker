@@ -15,4 +15,3 @@ public:
 	Deck(); // Default ctor. All we need
 	Card deal(); // Deals a card
 };
-
