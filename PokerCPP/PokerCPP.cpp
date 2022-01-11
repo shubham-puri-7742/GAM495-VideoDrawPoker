@@ -17,7 +17,7 @@ void play() {
     // Deal 5 cards and display each card dealt
     for (short i = 0; i < 5; ++i) {
         hand[i] = deck.deal();
-        cout << i + 1 << ". " << hand[i].display() << '\n'; // Possible refactoring: Overload << for the Card class
+        cout << i + 1 << ". " << hand[i] << '\n'; // Possible refactoring: Overload << for the Card class
     }
 
     // Blank line at the end
