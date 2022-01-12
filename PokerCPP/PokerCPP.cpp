@@ -4,19 +4,35 @@
 #include <ctime>
 #include <vector>
 #include "Card.h"
-#include "Deck.h"
+#include "NormalDeck.h"
+#include "PinochleDeck.h"
 #include "Eval.h"
 using namespace std;
 
 // Deck and hand (of 5 cards)
-Deck deck;
+Deck* deck;
 Card hand[5];
 
 // The main play-game function
 void play() {
+    cout << "Pick your deck:\n1) Standard\n2) Pinochle\n";
+    string deckChoice;
+    getline(cin, deckChoice);
+
+    switch (stoi(deckChoice)) {
+    case 2:
+        deck = new PinochleDeck;
+        break;
+    default:
+        cout << "Invalid selection. Defaulting to a standard deck...\n";
+	case 1:
+		deck = new NormalDeck;
+		break;
+    }
+
     // Deal 5 cards and display each card dealt
     for (short i = 0; i < 5; ++i) {
-        hand[i] = deck.deal();
+        hand[i] = deck->deal();
         cout << i + 1 << ". " << hand[i] << '\n'; // Possible refactoring: Overload << for the Card class
     }
 

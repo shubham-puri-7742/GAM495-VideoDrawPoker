@@ -140,9 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Eval.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="NormalDeck.cpp" />
+    <ClCompile Include="PinochleDeck.cpp" />
     <ClCompile Include="PokerCPP.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,8 @@
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Eval.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="NormalDeck.h" />
+    <ClInclude Include="PinochleDeck.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

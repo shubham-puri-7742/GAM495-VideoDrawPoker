@@ -1,10 +1,6 @@
-#include "Deck.h"
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <ctime>
+#include "NormalDeck.h"
 
-void Deck::shuffle() {
+void NormalDeck::shuffle() {
 	currentCard = 0; // Start with the first (zeroth) card)
 	// For each other card in reverse order
 	for (short i = 51; i > 0; --i) {
@@ -19,7 +15,7 @@ void Deck::shuffle() {
 	}
 }
 
-Deck::Deck() { // ctor
+NormalDeck::NormalDeck() { // ctor
 	// Seed rand
 	srand(time(nullptr));
 	// Store ints 0 to 51 for the cards
@@ -30,7 +26,7 @@ Deck::Deck() { // ctor
 	shuffle();
 }
 
-Card Deck::deal() { // Deal a card
+Card NormalDeck::deal() { // Deal a card
 	// If at the top
 	if (currentCard > 51) {
 		std::cout << "Reshuffling..." << std::endl;
