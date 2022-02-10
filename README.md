@@ -9,7 +9,7 @@ The redraw logic reads an input string from the player and parses it for single-
 
 One of the major additions to the last iteration of this project was making the decks polymorphic, so that special decks (Pinochle in this repo as of writing this) can be added later without modifying parts of the core deck class.
 
-The highlight of this project, however, is the logical solution to the problem of hand evaluation. The program uses an array of counts for ranks and suits (all initialised to 0). The reason this method is used is that it makes easy to spot hands such as straights, which - while sequential - do not necessarily depend on the order in which the cards are dealt (e.g. 4, 7, 6, 8, 5 is still a straight).
+The highlight of this project, however, is the logical solution to the problem of hand evaluation. The program uses an array of counts for ranks and suits (all initialised to 0). The reason this method is used is that it makes easy to spot hands such as straights, which - while sequential - do not necessarily depend on the order in which the cards are dealt (e.g. 4, 7, 6, 8, 5 is still a straight). Although this program uses text on the terminal, the core of this program is not constrained by the outer skin or how the game is presented visually.
 
 ### Reflection
 
