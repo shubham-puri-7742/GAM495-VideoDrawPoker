@@ -9,11 +9,11 @@ The redraw logic reads an input string from the player and parses it for single-
 
 One of the major additions to the last iteration of this project was making the decks polymorphic, so that special decks (Pinochle in this repo as of writing this) can be added later without modifying parts of the core deck class.
 
-The highlight of this project, however, is the hand evaluation. It uses an array of counts for ranks and suits (all initialised to 0). The reason this method is used is that it makes easy to spot hands such as straights, which - while sequential - do not necessarily depend on the order in which the cards are dealt (e.g. 4, 7, 6, 8, 5 is still a straight).
+The highlight of this project, however, is the logical solution to the problem of hand evaluation. The program uses an array of counts for ranks and suits (all initialised to 0). The reason this method is used is that it makes easy to spot hands such as straights, which - while sequential - do not necessarily depend on the order in which the cards are dealt (e.g. 4, 7, 6, 8, 5 is still a straight).
 
 ### Reflection
 
-This program borrows parts inspired by my IT312 project, which was a dice game (Liar's Dice), except instead of rolling five dice, we deal five cards here. This changes the way a card's data is encoded, but the use of random numbers remains more or less identical, except that (for the standard deck) the values are restricted from 0 to 51, which are further divided into groups (suits) of 13.
+This program borrows parts inspired by my IT312 project, which was a dice game (Liar's Dice), except instead of rolling five dice, we deal five cards here. One of the reasons for using C++ was that the code from Liar's Dice (specifically its Die class and the roll logic) could be modified for this project. The class design of both the projects is very similar, with a separate class for the central game objects (die, card and deck) and the game logic in a separate game class. The way a card's data is encoded is obviously different, but the use of random numbers remains more or less identical, except that (for the standard deck) the values are restricted from 0 to 51, which are further divided into groups (suits) of 13.
 
 The initial iteration simply dealt five cards. The evaluator class was added to it and the second build could evaluate some hands. Notably, the bicycle, little tiger, and big tiger hands were not part of this iteration. The most significant challenge for evaluating the hands was making the evaluation independent of the order in which cards were dealt. The use of arrays of counters greatly simplified this task.
 
