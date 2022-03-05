@@ -1,4 +1,4 @@
-# GAM495-VideoDrawPoker
+# VideoDrawPoker
 ### Console-based video draw poker in modern C++
 
 The program deals 5 random cards to the player and evaluates the hand based on the rules for some of the most common Poker hands. The program allows the player to redraw some cards before the hand is evaluated, should the player wish to have a chance at getting a better hand.
